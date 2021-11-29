@@ -1,0 +1,11 @@
+.uploader-modal {
+    .tags {
+        .tag {
+            font-size: 14px;
+            text-transform: uppercase;
+            &:first-of-type {
+                background: $accent-color;
+            }
+        }
+    }
+}

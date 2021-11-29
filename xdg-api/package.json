@@ -1,0 +1,32 @@
+{
+  "name": "xdg",
+  "version": "1.0.0",
+  "description": "X-D-G",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "node-sass -w views/assets/scss/all.scss -o views/assets/css --output-style compressed",
+    "dev-css": "node-sass -w views/assets/scss/all.scss -o views/assets/css"
+  },
+  "author": "SKC",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
+    "csurf": "^1.10.0",
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.1.5",
+    "express-session": "^1.16.2",
+    "helmet": "^3.21.0",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^1.6.5",
+    "nedb": "^1.8.0",
+    "nodemailer": "^6.3.0",
+    "pug": "^2.0.4",
+    "sequelize": "^5.10.3",
+    "sqlite3": "^4.0.9"
+  }
+}

@@ -1,0 +1,44 @@
+extends layout
+
+block content
+    #post-list
+        .home-page
+            .container
+                .header
+                    .tabs.is-fullwidth
+                        ul
+                            li
+                                span test
+
+                .home-page(v-if="posts.length > 0")
+                    .box(v-for="post in posts")
+                        .header
+                            .post-title(v-on:click="openDetail(post.id)")
+                                p.poster Posted by
+                                    a {{post.creator}}
+                                p {{post.title}}
+                        a(:href="'/dash/post/' + post.id")
+                            .image
+                                img(:src="post.media[0].mediaUrl")
+                        .post-footer
+                            .footer-item
+                                i.vote.fas.fa-fire
+                                span.count {{post.voteCount}}
+                            .footer-item
+                                i.far.fa-comment
+                                span.count {{post.commentCount}}
+
+    script.
+        const postApp = new Vue({
+            el: '#post-list',
+            data: {
+                posts: !{JSON.stringify(posts)},
+                postDetail: null,
+                user: null,
+            },
+            created: function () {
+                console.log(this.posts);
+            },
+            methods: {
+            }
+        })

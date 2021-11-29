@@ -1,0 +1,25 @@
+.loading-box {
+  border-radius: 10px;
+  p {
+    height: 17px;
+    width: 200px;
+    border-radius: 21px;
+    margin-bottom: 5px;
+    background: rgba(#333, 0.3)
+  }
+
+  .title {
+    width: 300px;
+    height: 20px;
+  }
+
+  .image {
+    height: 300px;
+    width: 100%;
+    background: linear-gradient(to right, #eccccc, #e2d6d68a);
+  }
+
+  .post-footer {
+    height: 40px;
+  }
+}

@@ -1,0 +1,20 @@
+extends layout
+
+block content
+    .container
+        form(method='Post' action='/dash/login')
+            .field
+                label.label Email
+                .control.has-icons-left
+                    input.input(name='email' type='email' placeholder='Email')
+                    span.icon.is-small.is-left
+                        i.fas.fa-envelope
+            .field
+                label.label Password
+                .control.has-icons-left
+                    input.input(name='password' type='password' placeholder='Password')
+                    span.icon.is-small.is-left
+                        i.fas.fa-lock
+            .field
+                input.button.is-link(type='submit' value='Login')
+                p.error.is-danger

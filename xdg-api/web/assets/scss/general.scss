@@ -1,0 +1,28 @@
+html {
+  background: #f7f7fb;
+  //min-height:100vh;
+  &.is-dark {
+    background: #000;
+    body {
+      background: #000;
+    }
+    .main-nav {
+      background: #000;
+      border-bottom: 1px solid #000;
+    }
+    .home-page {
+      .box {
+        box-shadow: none;
+        background: #222;
+      }
+    }
+  }
+}
+
+.is-clipped {
+  overflow: hidden !important;
+}
+
+.body-contents {
+  margin-top: 60px;
+}

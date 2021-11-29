@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    .container
+        .box
+            p #{post.title}
+                span by
+                    a #{post.creator}
+            each img in post.media
+                img(src=img.mediaUrl)
+

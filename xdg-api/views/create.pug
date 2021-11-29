@@ -1,0 +1,116 @@
+.modal.uploader-modal#create-modal(v-bind:class="{'is-active': showModal}")
+    .modal-background(v-on:click="closeModal")
+    .modal-card
+        .modal-card-head
+            p.modal-card-title Create Post
+            button.delete(v-on:click="closeModal")
+        .modal-card-body
+            .field
+                .control
+                    label.label Title
+                    input.input(type="text" placeholder="title" v-model="title")
+                    p.help.is-danger(v-if="showError && error.title") Title is required
+            .field
+                .control
+                    label.label Upload
+                    file-pond(ref="pond" v-model="files")
+                    p.help.is-danger(v-if="showError && error.file") Media is required
+            .field
+                .control
+                    label.label Tags
+                    input.input(type="text" placeholder="tags" v-model="tag")
+                    p.help Seperate tags by a comma
+        footer.modal-card-foot
+            button.button.is-success(v-on:click="createPost") Post
+            button.button(v-on:click="closeModal") Cancel
+script.
+    const createApp = new Vue({
+        el: '#create-modal',
+        components: {
+            FilePond: vueFilePond.default(FilePondPluginImagePreview)
+        },
+        data: {
+            postId: null,
+            server: '/post' + '/' + this.postId,
+            showModal: false,
+            showError: false,
+            error: {
+                title: false,
+                file: false
+            },
+            title: '',
+            files: [],
+            tag: '',
+            tags: []
+        },
+        created: function () {
+            this.pond = FilePond.setOptions({
+                multiple: false,
+                maxFiles: 1,
+                allowImagePreview: true,
+                instantUpload: true,
+                allowReplace: true,
+                allowRevert: false,
+                acceptedFileTypes: 'image/jpeg, image/png, image/gif',
+                server: this.server,
+            })
+        },
+        methods: {
+            createPost: function () {
+                if (this.checkForm) {
+                    this.$refs.pond.server = '/post'
+                    this.$refs.pond.processFiles();
+                    axios.post(this.server, {
+                        title: this.title,
+                        tag: this.tags
+                    }).then((res) => {
+                        console.log(res)
+                    }
+                )
+                }
+            },
+
+            checkForm: function () {
+                this.resetError();
+                if (this.title && this.file) {
+                    return true;
+                }
+
+                if (this.title === '' || this.title === null) {
+                    this.error.title = true;
+                }
+
+                if (this.files.length === 0 || this.files === null) {
+                    this.error.file = true;
+                }
+                this.showError = true;
+                return false
+            },
+
+            resetForm: function() {
+                this.resetError;
+                this.$refs.pond.removeFiles();
+                this.title = '';
+                this.tag = '';
+                this.tags = [];
+            },
+
+            resetError: function () {
+                this.showError = false;
+                this.error = {
+                    title: '',
+                    file: ''
+                }
+            },
+
+            closeModal: function () {
+                this.resetForm;
+                this.resetError;
+                this.showModal = false;
+            },
+
+            openModal: function () {
+                this.showModal = true;
+            }
+        }
+    })

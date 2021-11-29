@@ -1,0 +1,13 @@
+.uploader-modal {
+    .tags {
+        margin-bottom: 0;
+        .tag {
+            cursor: pointer;
+            text-transform: uppercase;
+            &.is-active {
+                background: $accent-color;
+                color: #ffffff;
+            }
+        }
+    }
+}

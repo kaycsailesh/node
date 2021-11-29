@@ -1,0 +1,27 @@
+.loading-box {
+    // background: linear-gradient(to right, #8251d8, #9b85c3);
+    background: #fff
+}
+.spinner {
+    width: 180px;
+    height: 180px;
+    border: 2px solid #f3f3f3;
+    border-top: 3px solid $accent-color;
+    border-radius: 100%;
+    margin: auto;
+    animation: spin 1s infinite linear;
+    &.is-small {
+        width: 60px;
+        height: 60px;
+    }
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+  
+    to {
+      transform: rotate(360deg);
+    }
+  }

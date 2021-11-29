@@ -1,0 +1,31 @@
+extends layout
+
+block content
+    .container
+        table.table.is-fullwidth#users
+            tr
+                td Name
+                td Email
+            each user in users
+                tr
+                    td #{user.firstname}
+                    td #{user.email}
+    script.
+        const users = new Vue({
+            el: '#users',
+            methods: {
+                banUser: function (id) {
+                    const url = '/dash/ban/' + id
+                    return axios.post(url, null).then(res => {
+                        
+                    })
+                },
+
+                removeBanUser: functiion (id) {
+                    const url = '/dash/removeban/' + id
+                    return axios.post(url, null).then(res => {
+                        console.log(res);
+                    })
+                }
+            }
+        })
