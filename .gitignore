@@ -80,3 +80,5 @@ typings/
 .fusebox/
 .DS_Store
 .DS_Store
+simple node uploader/public/.DS_Store
+.DS_Store
