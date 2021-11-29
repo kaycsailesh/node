@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="require.js"></script>
+    <script src="https://unpkg.com/bigchaindb-driver@4.2.0/dist/browser/bigchaindb-driver.window.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+<a onclick="tokenLaunch()">Launch Token</a>
+<script>
+    // Ed25519Keypair {
+    //     publicKey: 'GEkKQDKFf5qzi7WwY2VzwBd3VyLhCu1aSaWjSAU7dCpo',
+    //         privateKey: '7jWaeDMRTdTx6YZkpiRHEBhgoHWURrAAn31n5cuepVRL'
+    // }
+
+    function tokenLaunch() {
+        return fetch('http://localhost:3001/createToken').then(res => {
+            console.log(res);
+            return res.json()
+        }).then(json => {
+            console.log(json);
+        })
+    }
+</script>
+</body>
+</html>
